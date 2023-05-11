@@ -27,8 +27,14 @@ def extract_qa():
 
         answer = tokenizer.decode(span)
 
-        return json.dumps({'context': text[:384],
-                           'question': question[:384],
+        # reconstruct inputs, as truncated
+        decoded = tokenizer.decode(
+            inputs["input_ids"][0]).lstrip('<s>').rstrip('</s>').split('</s></s>')
+        question = decoded[0]
+        text = decoded[1]
+
+        return json.dumps({'context': text,
+                           'question': question,
                            'answer': answer})
 
 # app.run()
