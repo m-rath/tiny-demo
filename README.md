@@ -11,14 +11,12 @@ Real-time predictions depend on stateless serving functions. In this MVP demo, d
 # Instructions
 
 1. Clone this repo to your local machine.
-2. cd into the repo and download the pre-trained model (~500MB).
 
-        python -m get_roberta
-3. Build and run the Docker image.
+2. cd into the repo, then build and run the Docker image.
 
         docker build -t tiny-demo .
         docker run -dp 8000:8000 tiny-demo
-4. Test the endpoint with sample notebook `post_qa.ipynb`.
+3. Test the endpoint with sample notebook `post_qa.ipynb`.
 
 # Next steps
 
