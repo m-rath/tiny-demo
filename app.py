@@ -5,7 +5,6 @@ from flask import Flask, request
 
 
 app = Flask(__name__)
-# app.config["DEBUG"] = True
 
 chkpt = "./deepset/roberta-base-squad2-distilled"
 tokenizer = AutoTokenizer.from_pretrained(chkpt)
@@ -27,7 +26,6 @@ def extract_qa():
 
         answer = tokenizer.decode(span)
 
-        # reconstruct inputs, as truncated
         decoded = tokenizer.decode(
             inputs["input_ids"][0]).lstrip('<s>').rstrip('</s>').split('</s></s>')
         question = decoded[0]
@@ -36,5 +34,3 @@ def extract_qa():
         return json.dumps({'context': text,
                            'question': question,
                            'answer': answer})
-
-# app.run()
